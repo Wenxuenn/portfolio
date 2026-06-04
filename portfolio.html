@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chang Wen Xuen — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fafaf8;
+      color: #1a1a18;
+      min-height: 100vh
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      border-bottom: 0.5px solid #e5e4de;
+      background: #fafaf8;
+      position: sticky;
+      top: 0;
+      z-index: 10
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: #1a1a18
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      color: #6b6b65;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s
+    }
+
+    .nav-links a:hover {
+      color: #1a1a18
+    }
+
+    .hero {
+      padding: 5.5rem 3rem 3.5rem;
+      max-width: 860px
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9b9b93;
+      margin-bottom: 1.4rem
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      line-height: 1.06;
+      color: #1a1a18;
+      margin-bottom: 1.4rem
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #5c5c9a
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #5a5a54;
+      line-height: 1.85;
+      max-width: 500px;
+      font-weight: 300
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.2rem;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .btn-primary {
+      background: #1a1a18;
+      color: #fafaf8;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      font-family: 'DM Sans', sans-serif;
+      transition: opacity 0.2s
+    }
+
+    .btn-primary:hover {
+      opacity: 0.75
+    }
+
+    .btn-ghost {
+      color: #1a1a18;
+      font-size: 0.82rem;
+      text-decoration: none;
+      letter-spacing: 0.04em
+    }
+
+    .btn-ghost:hover {
+      text-decoration: underline
+    }
+
+    .divider {
+      height: 0.5px;
+      background: #e5e4de;
+      margin: 0 3rem
+    }
+
+    .section {
+      padding: 3.5rem 3rem
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9b9b93;
+      margin-bottom: 2.2rem
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: #e5e4de;
+      border: 0.5px solid #e5e4de
+    }
+
+    .card {
+      background: #fafaf8;
+      padding: 1.75rem;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s
+    }
+
+    .card:hover {
+      background: #f0efea
+    }
+
+    .card-icon {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+      font-size: 2.2rem
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.4rem
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9b9b93;
+      font-weight: 400
+    }
+
+    .card-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      font-weight: 500
+    }
+
+    .badge-live {
+      background: #eaf3de;
+      color: #3b6d11
+    }
+
+    .badge-wip {
+      background: #faeeda;
+      color: #854f0b
+    }
+
+    .badge-uni {
+      background: #eeedfb;
+      color: #534ab7
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: #1a1a18;
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+      padding-right: 1.5rem
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: #6b6b65;
+      margin-bottom: 0.9rem;
+      line-height: 1.65;
+      font-weight: 300
+    }
+
+    .card-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem
+    }
+
+    .stack-pill {
+      font-size: 0.68rem;
+      background: #f0efea;
+      color: #3a3a34;
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+      letter-spacing: 0.02em
+    }
+
+    .card-arrow {
+      position: absolute;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      font-size: 0.85rem;
+      color: #c5c4be;
+      transition: transform 0.2s, color 0.2s
+    }
+
+    .card:hover .card-arrow {
+      transform: translate(3px, -3px);
+      color: #1a1a18
+    }
+
+    .card-link {
+      font-size: 0.75rem;
+      color: #5c5c9a;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.3rem
+    }
+
+    .card-link:hover {
+      text-decoration: underline
+    }
+
+    .edu-tag {
+      font-size: 0.7rem;
+      color: #9b9b93;
+      margin-top: 0.5rem
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 780px
+    }
+
+    @media(max-width:600px) {
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      nav {
+        padding: 1rem 1.5rem
+      }
+
+      .hero {
+        padding: 3rem 1.5rem 2.5rem
+      }
+
+      .section {
+        padding: 2.5rem 1.5rem
+      }
+
+      .divider {
+        margin: 0 1.5rem
+      }
+
+      .contact-wrap {
+        padding: 2.5rem 1.5rem
+      }
+
+      .footer {
+        padding: 1.2rem 1.5rem
+      }
+    }
+
+    .about-block h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #1a1a18
+    }
+
+    .about-block p {
+      font-size: 0.88rem;
+      color: #5a5a54;
+      line-height: 1.8;
+      font-weight: 300
+    }
+
+    .skills-wrap {
+      margin-top: 0;
+      max-width: 700px
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 0.75rem
+    }
+
+    .skill-pill {
+      background: #f0efea;
+      border-radius: 2px;
+      padding: 0.65rem 1.1rem;
+      font-size: 0.82rem;
+      color: #3a3a34;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem
+    }
+
+    .skill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #5c5c9a;
+      flex-shrink: 0
+    }
+
+    .contact-wrap {
+      background: #1a1a18;
+      padding: 3.5rem 3rem;
+      color: #fafaf8
+    }
+
+    .contact-wrap .section-label {
+      color: #555550
+    }
+
+    .contact-wrap h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.65rem;
+      color: #fafaf8
+    }
+
+    .contact-wrap p {
+      color: #9b9b93;
+      font-weight: 300;
+      max-width: 400px;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+      font-size: 0.95rem
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem
+    }
+
+    .contact-item span:first-child {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555550
+    }
+
+    .contact-item a,
+    .contact-item span:last-child {
+      color: #fafaf8;
+      font-size: 0.88rem;
+      text-decoration: none
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline
+    }
+
+    .footer {
+      padding: 1.3rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid #2c2c2a;
+      background: #1a1a18
+    }
+
+    .footer p {
+      font-size: 0.75rem;
+      color: #555550
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <span class="nav-name">Chang Wen Xuen</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-label">Web & App Developer · UTM Computer Science</p>
+    <h1>Building things<br>for the <em>web</em> &<br>beyond.</h1>
+    <p>I design and develop clean, functional websites and mobile applications — turning complex problems into polished
+      digital experiences.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View my work ↓</a>
+      <a href="#contact" class="btn-ghost">Get in touch →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="work">
+    <p class="section-label">Selected projects</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-icon" style="background:#eeedfb">🏫</div>
+        <div class="card-top">
+          <span class="card-tag">Web App · Agile</span>
+          <span class="card-badge badge-uni">University</span>
+        </div>
+        <p class="card-title">School Management Information System</p>
+        <p class="card-desc">Digitized teacher data, attendance tracking, and performance evaluations. Integrated
+          AI-assisted lesson planning built with Agile Scrum methodology including sprints, backlog, and stand-ups.</p>
+        <div class="card-stack">
+          <span class="stack-pill">React</span>
+          <span class="stack-pill">NestJS</span>
+          <span class="stack-pill">MongoDB</span>
+          <span class="stack-pill">HTML/CSS</span>
+          <span class="stack-pill">AI Integration</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="background:#faece7">🚚</div>
+        <div class="card-top">
+          <span class="card-tag">Web App · RPA · AI</span>
+          <span class="card-badge badge-uni">University</span>
+        </div>
+        <p class="card-title">AI-Powered Knowledge Base — DHL</p>
+        <p class="card-desc">Automated conversion of unstructured logistics data (PDFs, emails, images) into structured
+          SOPs. A UiPath RPA bot monitors input folders, logs in, and creates knowledge articles automatically.</p>
+        <div class="card-stack">
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">UiPath RPA</span>
+          <span class="stack-pill">REST API</span>
+          <span class="stack-pill">JSON DB</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="background:#eaf3de">📅</div>
+        <div class="card-top">
+          <span class="card-tag">Web App · Full-stack</span>
+          <span class="card-badge badge-live">University</span>
+        </div>
+        <p class="card-title">Space Booking Management System</p>
+        <p class="card-desc">Role-based university room and lab booking platform. Lecturers reserve spaces, space
+          managers approve bookings, and admins oversee user access and activity logs with feedback tracking.</p>
+        <div class="card-stack">
+          <span class="stack-pill">PHP</span>
+          <span class="stack-pill">MySQL</span>
+          <span class="stack-pill">JavaScript</span>
+          <span class="stack-pill">HTML/CSS</span>
+          <span class="stack-pill">RBAC</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="skills">
+    <p class="section-label">Skills & tools</p>
+    <div class="skills-wrap">
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot"></span>React / HTML / CSS</div>
+        <div class="skill-pill"><span class="skill-dot"></span>NestJS / Node.js</div>
+        <div class="skill-pill"><span class="skill-dot"></span>JavaScipt</div>
+        <div class="skill-pill"><span class="skill-dot"></span>C++</div>
+        <div class="skill-pill"><span class="skill-dot"></span>PHP / MySQL</div>
+        <div class="skill-pill"><span class="skill-dot"></span>MongoDB</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Flutter / Dart</div>
+        <div class="skill-pill"><span class="skill-dot"></span>REST API Design</div>
+        <div class="skill-pill"><span class="skill-dot"></span>UiPath RPA</div>
+        <div class="skill-pill"><span class="skill-dot"></span>JWT Authentication</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Agile / Scrum</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Git & GitHub</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section" id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Background</h3>
+        <p>Computer Science student at Universiti Teknologi Malaysia (UTM), building web and mobile applications across
+          full-stack development, automation, and AI-integrated systems.</p>
+      </div>
+      <div class="about-block">
+        <h3>Approach</h3>
+        <p>I enjoy solving real problems with clean code — from digitising school workflows to automating logistics
+          operations. I work well in Agile teams and take projects from idea to deployed product.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-wrap" id="contact">
+    <p class="section-label">Let's work together</p>
+    <h2>Got a project<br>in mind?</h2>
+    <p>Open to internships, freelance projects, and collaborations. Let's build something great together.</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:changwenxuen@gmail.com">changwenxuen@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>University</span>
+        <span>UTM, Malaysia</span>
+      </div>
+      <div class="contact-item">
+        <span>GitHub</span>
+        <a href="https://github.com/Wenxuenn" target="_blank">github.com/Wenxuenn</a>
+      </div>
+      <div class="contact-item">
+        <span>LinkedIn</span>
+        <a href="https://www.linkedin.com/in/chang-wen-xuen" target="_blank">linkedin.com/in/chang-wen-xuen</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 Chang Wen Xuen</p>
+    <p>UTM Computer Science</p>
+  </div>
+
+</body>
+
+</html>
